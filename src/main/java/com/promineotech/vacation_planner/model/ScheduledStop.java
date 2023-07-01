@@ -1,7 +1,9 @@
 package com.promineotech.vacation_planner.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class ScheduledStop {
 

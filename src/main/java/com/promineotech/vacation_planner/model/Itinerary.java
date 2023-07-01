@@ -1,11 +1,13 @@
 package com.promineotech.vacation_planner.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 public class Itinerary {
 
