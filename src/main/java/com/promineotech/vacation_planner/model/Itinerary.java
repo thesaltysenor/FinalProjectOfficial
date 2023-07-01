@@ -17,6 +17,11 @@ public class Itinerary {
     private LocalDate startDate;
     private LocalDate endDate;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+
     @OneToMany(mappedBy = "itinerary")
     private Set<ScheduledStop> destinations = new HashSet<>();
 

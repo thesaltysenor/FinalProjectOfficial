@@ -17,6 +17,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Itinerary> itineraries;
 
+    public void setUserId(Long userId){
+        this.userId = userId;
+    }
+
     public Long getUserId() {
         return userId;
     }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/destinations")
 public class DestinationController {
 
     private final DestinationService destinationService;
@@ -25,7 +26,7 @@ public class DestinationController {
     public Destination getDestinationById(@PathVariable Long id) {
         return destinationService.getDestinationById(id);
     }
-    @PostMapping
+    @PostMapping("/id")
     @ResponseStatus(HttpStatus.CREATED)
     public Destination createDestination(@RequestBody Destination destination) {
         return destinationService.saveDestination(destination);
