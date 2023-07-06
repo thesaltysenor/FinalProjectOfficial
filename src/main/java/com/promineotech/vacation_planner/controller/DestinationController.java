@@ -26,7 +26,7 @@ public class DestinationController {
     public Destination getDestinationById(@PathVariable Long id) {
         return destinationService.getDestinationById(id);
     }
-    @PostMapping("/id")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Destination createDestination(@RequestBody Destination destination) {
         return destinationService.saveDestination(destination);
