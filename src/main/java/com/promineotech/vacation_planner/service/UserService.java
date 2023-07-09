@@ -22,14 +22,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User with id " + userId + " not found."));
-    }
-
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
     public User updateUser(Long userId, User newUserDetails) {
         return userRepository.findById(userId).map(user -> {
             user.setUsername(newUserDetails.getUsername());
@@ -37,6 +29,15 @@ public class UserService {
             user.setEmail(newUserDetails.getEmail());
             return userRepository.save(user);
         }).orElseThrow(() -> new EntityNotFoundException("User with id " +userId + "not found."));
+    }
+
+
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User with id " + userId + " not found."));
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public void deleteUser(Long userId) {

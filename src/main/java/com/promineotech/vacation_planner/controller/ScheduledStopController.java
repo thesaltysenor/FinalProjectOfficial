@@ -35,12 +35,14 @@ public class ScheduledStopController {
 
     @PutMapping("/{id}")
     public ScheduledStop updateScheduledStop(@PathVariable Long id, @RequestBody ScheduledStop scheduledStop) {
-        return scheduledStopService.saveScheduledStop(scheduledStop);
+        return scheduledStopService.updateScheduledStop(id, scheduledStop);
     }
 
     @DeleteMapping("/{id}")
     public void deleteScheduledStop(@PathVariable Long id) {
         scheduledStopService.deleteScheduledStop(id);
     }
+
+
 
 }

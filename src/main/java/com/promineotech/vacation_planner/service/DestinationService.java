@@ -22,6 +22,17 @@ public class DestinationService {
         return destinationRepository.save(destination);
     }
 
+    public Destination updateDestination(Long destinationId, Destination updatedDestination) {
+        return destinationRepository.findById(destinationId).map(destination -> {
+            destination.setDestinationName(updatedDestination.getDestinationName());
+            destination.setDestinationDescription(updatedDestination.getDestinationDescription());
+            destination.setCity(updatedDestination.getCity());
+            destination.setStateOrRegion(updatedDestination.getStateOrRegion());
+            destination.setCountry(updatedDestination.getCountry());
+            return destinationRepository.save(destination);
+        }).orElseThrow(() -> new EntityNotFoundException("Destination with id " + destinationId + " not found."));
+    }
+
     public Destination getDestinationById(Long destinationId) {
         return destinationRepository.findById(destinationId).orElseThrow(() -> new EntityNotFoundException("Destination with id " + destinationId + " not found."));
     }

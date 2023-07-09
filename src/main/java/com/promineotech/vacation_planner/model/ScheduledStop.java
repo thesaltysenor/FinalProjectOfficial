@@ -11,11 +11,11 @@ public class ScheduledStop {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long scheduledStop ;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itinerary_id")
     private Itinerary itinerary;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "destination_id")
     private Destination destination;
 

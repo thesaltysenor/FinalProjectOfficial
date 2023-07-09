@@ -1,6 +1,9 @@
 package com.promineotech.vacation_planner.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,8 +18,17 @@ public class Itinerary {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itineraryId;
 
+    @NotBlank(message = "Itinerary must have a name.")
     private String itineraryName;
+
+    @NotNull
+    @Column(nullable = false)
+    @Future(message = "Start date must be in the future.")
     private LocalDate startDate;
+
+    @NotNull
+    @Column(nullable = false)
+    @Future(message = "End date must be in the future.")
     private LocalDate endDate;
 
     @ManyToOne

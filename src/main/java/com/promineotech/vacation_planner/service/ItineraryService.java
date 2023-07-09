@@ -22,6 +22,16 @@ public class ItineraryService {
         return itineraryRepository.save(itinerary);
     }
 
+    public Itinerary updateItinerary(Long itineraryId, Itinerary updatedItinerary) {
+        return itineraryRepository.findById(itineraryId).map(itinerary -> {
+            itinerary.setItineraryName(updatedItinerary.getItineraryName());
+            itinerary.setStartDate(updatedItinerary.getStartDate());
+            itinerary.setEndDate(updatedItinerary.getEndDate());
+            return itineraryRepository.save(itinerary);
+        }).orElseThrow(() -> new EntityNotFoundException("Itinerary with id " + itineraryId + " not found."));
+    }
+
+
     public Itinerary getItineraryById(Long itineraryId) {
         return itineraryRepository.findById(itineraryId)
                 .orElseThrow(() -> new EntityNotFoundException("Itinerary with id " + itineraryId + " not found."));
