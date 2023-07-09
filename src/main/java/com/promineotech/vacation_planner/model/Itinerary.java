@@ -21,6 +21,7 @@ public class Itinerary {
     @NotBlank(message = "Itinerary must have a name.")
     private String itineraryName;
 
+    // @Future annotation is used to ensure that the startDate is a date in the future.
     @NotNull
     @Column(nullable = false)
     @Future(message = "Start date must be in the future.")
@@ -31,11 +32,13 @@ public class Itinerary {
     @Future(message = "End date must be in the future.")
     private LocalDate endDate;
 
+    // This means each Itinerary is associated with one User.
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
+    // This means one Itinerary can have multiple ScheduledStops.
+    // The HashSet will store these ScheduledStop instances.
     @OneToMany(mappedBy = "itinerary")
     private Set<ScheduledStop> destinations = new HashSet<>();
 
